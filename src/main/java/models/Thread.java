@@ -8,6 +8,10 @@ public class Thread {
     private String descriptionThread;
     private String colorThread;
 
+    private Timestamp TimeStampCreation;
+    private User creatorThread;
+
+
     public String getColorThread() {
         return colorThread;
     }
@@ -24,8 +28,7 @@ public class Thread {
         this.descriptionThread = descriptionThread;
     }
 
-    private Timestamp TimeStampCreation;
-    private User creatorThread;
+
 
 
     public Thread(){}
@@ -62,6 +65,17 @@ public class Thread {
         this.descriptionThread = descriptionThread;
 
     }
+
+    public Thread(int idThread, String titleThread, Timestamp TimeStampCreation, User creatorThread, String descriptionThread, String colorThread) {
+        this.idThread = idThread;
+        this.titleThread = titleThread;
+        this.TimeStampCreation = TimeStampCreation;
+        this.creatorThread = creatorThread;
+        this.descriptionThread = descriptionThread;
+        this.colorThread = colorThread;
+
+    }
+
     public Thread(int idThread,String titleThread, Timestamp TimeStampCreation) {
         this.idThread = idThread;
         this.titleThread = titleThread;
@@ -80,6 +94,8 @@ public class Thread {
         this.descriptionThread = descriptionThread;
 
     }
+
+
     public Thread(int idThread,String titleThread) {
         this.idThread = idThread;
         this.titleThread = titleThread;
@@ -120,7 +136,7 @@ public class Thread {
 
     @Override
     public String toString() {
-        return "Discussion{" +
+        return "Thread{" +
 
                 ", title='" + titleThread + '\'' +
                 ", TimeStampCreation=" + TimeStampCreation +

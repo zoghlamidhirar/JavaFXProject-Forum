@@ -9,24 +9,24 @@ import javafx.stage.Stage;
 public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Charger le fichier FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/hello-view.fxml"));
+        // Load the FXML file for the main scene
+        Parent root = FXMLLoader.load(getClass().getResource("/modifyTitle.fxml"));
 
-        // Créer une nouvelle scène avec le contenu du fichier FXML
+        // Create the scene
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
-        // Définir la scène sur la scène principale
+        // Set the scene to the stage
         primaryStage.setScene(scene);
 
-        // Définir le titre de la fenêtre
-        primaryStage.setTitle("Forum");
+        // Set the title of the stage
+        primaryStage.setTitle("Al3eb Forum Application");
 
-        // Afficher la fenêtre
+        // Show the stage
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+        // Launch the JavaFX application
         launch(args);
     }
 }
