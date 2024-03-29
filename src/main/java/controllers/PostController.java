@@ -83,6 +83,15 @@ public class PostController {
 
         System.out.println(Posts);
 
+        // Add event handler for the emoji button
+        emojiButton.setOnAction(e -> {
+            try {
+                emojiPopup(); // Call the emojiPopup method
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
         sendButton.setOnAction(e -> {
             try {
                 sendPost(); // Call the sendPost method to send the post
