@@ -13,7 +13,7 @@
     <children>
         <StackPane prefHeight="248.0" prefWidth="1051.0">
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Listes des discussions ">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="List of Threads">
                     <font>
                         <Font name="System Bold Italic" size="28.0" />
                     </font>
@@ -22,28 +22,28 @@
         </StackPane>
         <StackPane prefHeight="70.0" prefWidth="614.0">
             <children>
-                <TextField fx:id="rechercheField" promptText="Rechercher une discussion" />
+                <TextField fx:id="rechercheField" promptText="Search for a Thread" />
             </children>
         </StackPane>
         <StackPane prefHeight="215.0" prefWidth="588.0">
             <children>
                 <TableView fx:id="table" prefHeight="394.0" prefWidth="529.0" styleClass="table">
                     <columns>
-                        <TableColumn fx:id="titreColumn" prefWidth="241.0" text="Titre" />
-                        <TableColumn fx:id="createurColumn" prefWidth="187.0" text="Createur" />
-                        <TableColumn fx:id="dateCreationColumn" prefWidth="185.0" text="Date de Creation" />
+                        <TableColumn fx:id="titreColumn" prefWidth="241.0" text="Title" />
+                        <TableColumn fx:id="createurColumn" prefWidth="187.0" text="Creator" />
+                        <TableColumn fx:id="dateCreationColumn" prefWidth="185.0" text="Date of Creation" />
                     </columns>
                 </TableView>
             </children>
         </StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#redirectToAjout" text="Ajouter une discussion" />
+                <Button mnemonicParsing="false" onAction="#redirectToAjout" text="Add a Thread" />
             </children>
         </StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#retournerVersAcceuil" text="Retour" />
+                <Button mnemonicParsing="false" onAction="#retournerVersAcceuil" text="Return" />
             </children>
         </StackPane>
 

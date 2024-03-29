@@ -39,7 +39,7 @@ public class modifyTitle {
             descriptionMod.setText(thread.getDescriptionThread());
             color.setValue(Color.web(thread.getColorThread()));
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception appropriately
+            e.printStackTrace();
         }
     }
 
@@ -55,10 +55,10 @@ public class modifyTitle {
                 (int)(c.getBlue() * 255));
 
         if (titre.isEmpty()) {
-            error.setText("Le champ titre est vide !");
+            error.setText("Title field is empty !");
             isTitreValid = false;
         } else if (titre.length() > 10) {
-            error.setText("Le titre ne doit pas dépasser 10 caractères !");
+            error.setText("Maximum length of a Title shouldn't be greater than 10 !");
             isTitreValid = false;
         } else {
             error.setText("");
@@ -66,24 +66,44 @@ public class modifyTitle {
         }
 
         if (description.isEmpty()) {
-            error2.setText("Le champ description est vide !");
+            error2.setText("Description field is empty !");
             isDescriptionValid = false;
         } else {
             error2.setText("");
             isDescriptionValid = true;
         }
 
+        try {
+            if(addThread.titreExist(titre)){
+                error.setText("Title exists !");
 
-        if (isTitreValid && isDescriptionValid) {
-            Thread thread = new Thread(id, titre, description, colorAsRgb);
-            try {
-                threadService.update(thread);
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Thread has been successfully modified !");
-                changeScene("/listThreads.fxml");
-            } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
-                changeScene("/listThreads.fxml");
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if(!addThread.titreValide(description)){
+            error2.setText("The description contain inapropriate words !");
+        }
+        if(!addThread.titreValide(titre)){
+            error.setText("The title contain inapropriate words !");
+
+        }
+
+
+        try {
+            if (addThread.titreValide(titre) && !addThread.titreExist(titre) && isTitreValid && isDescriptionValid) {
+                Thread thread = new Thread(id, titre, description, colorAsRgb);
+                try {
+                    threadService.update(thread);
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Thread has been successfully modified !");
+                    changeScene("/listThreads.fxml");
+                } catch (SQLException e) {
+                    showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
+                    changeScene("/listThreads.fxml");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -105,6 +125,6 @@ public class modifyTitle {
 
     @FXML
     public void retour() {
-        // Implement the method to go back to the previous screen
+        changeScene("/Post.fxml");
     }
 }

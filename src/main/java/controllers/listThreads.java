@@ -33,12 +33,25 @@ public class listThreads {
     private ThreadService threadService = new ThreadService();
 
     public void initialize() {
+        ThreadService ds = new ThreadService();
+        ObservableList<Thread> discussions = null;
         try {
-            initTableColumns();
-            loadThreads();
+            discussions = FXCollections.observableList(ds.getAll());
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception appropriately
+            throw new RuntimeException(e);
         }
+        titreColumn.setCellValueFactory(new PropertyValueFactory<>("titleThread"));
+        createurColumn.setCellValueFactory(cellData -> {
+            String creatorName = cellData.getValue().getCreatorThread().getNom();
+            return new SimpleStringProperty(creatorName);
+        });
+
+        rechercheField.textProperty().addListener((observable, oldValue, newValue) -> {
+            rechercherParUser();// Appeler la méthode rechercherParNom lorsque le texte dans le champ de recherche change
+        });
+        dateCreationColumn.setCellValueFactory(new PropertyValueFactory<>("TimeStampCreation"));
+        table.setItems(discussions);
+        onClick();
     }
 
     private void initTableColumns() {
@@ -58,14 +71,18 @@ public class listThreads {
         table.setRowFactory(tv -> {
             TableRow<Thread> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
+                if (! row.isEmpty() && event.getButton()== MouseButton.PRIMARY
                         && event.getClickCount() == 2) {
+
                     Thread clickedRow = row.getItem();
-                    // Handle double-click event
-                    // For example: open the discussion in a new window
+                    // Retrieve the ID of the clicked thread
+                    int threadId = clickedRow.getIdThread();
+                    PostController.thrdId = threadId;
+                    changeScene("/Post.fxml");
+
                 }
             });
-            return row;
+            return row ;
         });
     }
 
@@ -76,7 +93,7 @@ public class listThreads {
 
     @FXML
     public void retournerVersAcceuil() {
-        // Implement the method to go back to the home page or previous page
+        //for future purposes i gotta implement this !
     }
 
     @FXML
@@ -84,16 +101,17 @@ public class listThreads {
         String nomRecherche = rechercheField.getText().trim().toLowerCase();
 
         if (!nomRecherche.isEmpty()) {
-            Predicate<Thread> nomPredicate = thread ->
-                    thread.getCreatorThread().getNom().toLowerCase().contains(nomRecherche);
+            // Créer un prédicat pour filtrer les espaces dont le nom contient la chaîne de recherche
+            Predicate<Thread> nomPredicate = thread -> thread.getCreatorThread().getNom().toLowerCase().contains(nomRecherche);
+
+            // Créer un FilteredList avec le prédicat
             FilteredList<Thread> filteredList = new FilteredList<>(table.getItems(), nomPredicate);
+
+            // Mettre à jour la liste affichée dans la ListView avec le FilteredList filtré
             table.setItems(filteredList);
         } else {
-            try {
-                loadThreads();
-            } catch (SQLException e) {
-                e.printStackTrace(); // Handle or log the exception appropriately
-            }
+            // Si le champ de recherche est vide, afficher tous les espaces
+            changeScene("/listThreads.fxml");
         }
     }
 
@@ -102,7 +120,7 @@ public class listThreads {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
             table.getScene().setRoot(root);
         } catch (IOException e) {
-            e.printStackTrace(); // Handle or log the exception appropriately
+            e.printStackTrace();
         }
     }
 }

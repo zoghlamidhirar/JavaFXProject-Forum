@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ff311902-3ab3-431f-b913-c5ec9af2065a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/listThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/listThreads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/modifyTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/modifyTitle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Message.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/addThread.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/addThread.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/listThreads.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/listThreads.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/modifyTitle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/modifyTitle.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +111,12 @@
       <workItem from="1711550658829" duration="3000" />
       <workItem from="1711566902515" duration="713000" />
       <workItem from="1711623520158" duration="11121000" />
+      <workItem from="1711637250651" duration="2531000" />
+      <workItem from="1711641800559" duration="51000" />
+      <workItem from="1711642705276" duration="104000" />
+      <workItem from="1711643384991" duration="32000" />
+      <workItem from="1711727216372" duration="1979000" />
+      <workItem from="1711742600183" duration="2510000" />
     </task>
     <servers />
   </component>

@@ -12,7 +12,7 @@
     <children>
         <StackPane prefHeight="307.0" prefWidth="1051.0">
             <children>
-                <Label text="modifier la discussion">
+                <Label text="Update the thread">
                     <font>
                         <Font name="System Bold Italic" size="28.0" />
                     </font>
@@ -56,12 +56,12 @@
         </StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#modifierTitre" styleClass="button" text="modifier" />
+                <Button mnemonicParsing="false" onAction="#modifierTitre" styleClass="button" text="update" />
             </children>
         </StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#retour" text="Retour" />
+                <Button mnemonicParsing="false" onAction="#retour" text="Return" />
             </children>
         </StackPane>
     </children>

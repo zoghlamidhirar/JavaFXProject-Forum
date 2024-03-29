@@ -49,7 +49,7 @@ public class PostService implements IService<Post>{
             pst.setString(1, Post.getContentPost());
             pst.setTimestamp(2, Post.getTimeStamp_envoi());
             pst.setInt(3,Post.getSender().getId());
-            pst.setInt(4, PostController.threadId);
+            pst.setInt(4, PostController.thrdId);
             if(file == null){
 
                 pst.setNull(5, java.sql.Types.BLOB);

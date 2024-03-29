@@ -58,7 +58,7 @@ public class PostController {
         this.PostField = PostField;
     }
 
-    public static int threadId = 10 ;
+    public static int thrdId  ;
     public static String emojis = "";
 
 
@@ -70,8 +70,8 @@ public class PostController {
 
 
     public void initialize() throws SQLException {
-        ObservableList<Post> Posts = FXCollections.observableList(ms.afficherByThreadId(threadId));
-        Thread d1 = ds.getById(threadId);
+        ObservableList<Post> Posts = FXCollections.observableList(ms.afficherByThreadId(thrdId));
+        Thread d1 = ds.getById(thrdId);
         if(!userConnected.equals(d1.getCreatorThread())){
             delete.setVisible(false);
             update.setVisible(false);
@@ -135,7 +135,7 @@ public class PostController {
             alert.setContentText("Are you ok with deleting the Thread?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
-                ds.delete(threadId);
+                ds.delete(thrdId);
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                 alert1.setTitle("success ");
                 alert1.setContentText("Thread deleted successfully");

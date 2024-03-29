@@ -42,6 +42,7 @@ public class addThread {
 
     boolean isTitleValid = true;
     boolean isDescriptionValid = true;
+
     @FXML
     void addEvent() throws SQLException {
         String title = titre.getText();
@@ -71,10 +72,18 @@ public class addThread {
             isDescriptionValid = true;
         }
         if(titreExist(title)){
-            errorMessage.setText("Le titre exist !");
+            errorMessage.setText("The title exists !");
+        }
+        if(!titreValide(desc)){
+            errorMessage2.setText("The description contain inapropriate words !");
+        }
+        if(!titreValide(title)){
+            errorMessage.setText("The title contain inapropriate words !");
 
         }
-        if(!titreExist(title) && isTitleValid && isDescriptionValid){
+
+
+        if(titreValide(title) && !titreExist(title) && isTitleValid && isDescriptionValid){
             try {
 
                 ThreadService ts = new ThreadService();
@@ -114,4 +123,32 @@ public class addThread {
         }
         return false;
     }
+
+
+    public static boolean titreValide(String titre) {
+        List<String> motsInterdits = null;
+        try {
+            motsInterdits = Files.readAllLines(Paths.get("src/main/java/utils/motsinap.txt"));
+        } catch (IOException e) {
+            System.out.println("Erreur lors de la lecture du fichier de mots inappropriés");
+            System.out.println(e.getMessage());
+        }
+        if (motsInterdits == null) {
+            return true;
+        }
+
+        // Convertir le titre en minuscules pour une comparaison insensible à la casse
+        String titreMinuscules = titre.toLowerCase();
+
+        // Vérifier si le titre contient un mot interdit
+        for (String mot : motsInterdits) {
+            if (titreMinuscules.contains(mot)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 }

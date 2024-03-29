@@ -12,21 +12,21 @@
     <children>
         <StackPane prefHeight="327.0" prefWidth="1051.0">
             <children>
-                <Label prefHeight="0.0" prefWidth="252.0" text="Ajouter une discussion">
+                <Label prefHeight="0.0" prefWidth="252.0" text="Add a thread">
                     <font>
                         <Font name="System Bold Italic" size="24.0" />
                     </font>
                 </Label>
             </children>
         </StackPane>
-        <Label text="Titre">
+        <Label text="Title">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
         <StackPane prefHeight="74.0" prefWidth="1051.0">
             <children>
-                <TextField fx:id="titre" prefHeight="25.0" prefWidth="359.0" promptText="Ajouter titre de votre discussion" styleClass="text-field1" />
+                <TextField fx:id="titre" prefHeight="25.0" prefWidth="359.0" promptText="Add a title for your thread" styleClass="text-field1" />
             </children>
         </StackPane>
         <StackPane prefHeight="24.0" prefWidth="468.0">
@@ -45,7 +45,7 @@
         </Label>
         <StackPane prefHeight="60.0" prefWidth="468.0">
             <children>
-                <TextField fx:id="description" prefHeight="58.0" prefWidth="418.0" promptText="Ajouter description de votre discussion" styleClass="text-field1" />
+                <TextField fx:id="description" prefHeight="58.0" prefWidth="418.0" promptText="Add a description of your thread" styleClass="text-field1" />
             </children>
         </StackPane>
         <StackPane prefHeight="24.0" prefWidth="468.0">
@@ -69,7 +69,7 @@
         </StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#changeScene" styleClass="button" text="Liste des discussions" />
+                <Button mnemonicParsing="false" onAction="#changeScene" styleClass="button" text="List of Threads" />
             </children>
         </StackPane>
     </children>
