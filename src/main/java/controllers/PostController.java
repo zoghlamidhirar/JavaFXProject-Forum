@@ -80,10 +80,12 @@ public class PostController {
 
         PostList.setItems(Posts);
         PostList.setCellFactory(param -> new PostCell());
+
         System.out.println(Posts);
+
         sendButton.setOnAction(e -> {
             try {
-                sendPost(); // Call the sendPost() method to send the post
+                sendPost(); // Call the sendPost method to send the post
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -93,7 +95,9 @@ public class PostController {
         attachButton.setOnAction(e->{
             PostService.file = fileChooser.showOpenDialog(stage);
             if(PostService.file!=null){
+
                 System.out.println(PostService.file);
+
                 Image image = new Image(PostService.file.toURI().toString(),100,150,true,true);
                 System.out.println(image);
                 imageView.setImage(image);
@@ -191,7 +195,7 @@ public class PostController {
         changeScene("/modifyTitle.fxml");
     }
 
-    /*
+
         Stage newStage = new Stage();
 
         public void emojiPopup() throws IOException {
@@ -209,7 +213,7 @@ public class PostController {
                 }
             });
         }
-    */
+
     private void attachContextMenuToListView(ListView<Post> listView) {
         listView.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.SECONDARY) { // Right-click detected
