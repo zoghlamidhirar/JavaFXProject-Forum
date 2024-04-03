@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ff311902-3ab3-431f-b913-c5ec9af2065a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,8 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
 }</component>
   <component name="RunManager" selected="Application.MainFX">
@@ -111,6 +114,16 @@
       <workItem from="1711747064718" duration="1871000" />
       <workItem from="1711749478290" duration="121000" />
       <workItem from="1711752891963" duration="1202000" />
+      <workItem from="1711801477198" duration="663000" />
+      <workItem from="1711803382129" duration="139000" />
+      <workItem from="1711806913335" duration="912000" />
+      <workItem from="1711808375837" duration="44000" />
+      <workItem from="1711809028802" duration="2000" />
+      <workItem from="1711989489609" duration="2820000" />
+      <workItem from="1712011068320" duration="105000" />
+      <workItem from="1712018654950" duration="59000" />
+      <workItem from="1712018858401" duration="142000" />
+      <workItem from="1712151620352" duration="75000" />
     </task>
     <servers />
   </component>

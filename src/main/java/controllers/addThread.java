@@ -55,17 +55,17 @@ public class addThread {
                 (int)(c.getBlue() * 255));
         Thread thread = new Thread(title,currentTimestamp,user1,desc,colorAsRgb);
         if (title.isEmpty()) {
-            errorMessage.setText("Le champ titre est vide !");
+            errorMessage.setText("Title field is empty !");
             isTitleValid = false;
         } else if (title.length() > 10) {
-            errorMessage.setText("Le titre ne doit pas dépasser 10 caractères !");
+            errorMessage.setText("Maximum length of a Title shouldn't be greater than 10 !");
             isTitleValid = false;
         }else{
             errorMessage.setText("");
             isTitleValid = true;
         }
         if (desc.isEmpty()) {
-            errorMessage2.setText("Le champ description est vide !");
+            errorMessage2.setText("Description field is empty !");
             isDescriptionValid = false;
         }else{
             errorMessage2.setText("");
