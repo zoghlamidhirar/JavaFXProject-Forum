@@ -29,9 +29,9 @@
             <children>
                 <TableView fx:id="table" prefHeight="394.0" prefWidth="529.0" styleClass="table">
                     <columns>
-                        <TableColumn fx:id="titreColumn" prefWidth="241.0" text="Title" />
-                        <TableColumn fx:id="createurColumn" prefWidth="187.0" text="Creator" />
-                        <TableColumn fx:id="dateCreationColumn" prefWidth="185.0" text="Date of Creation" />
+                        <TableColumn fx:id="titreColumn" prefWidth="426.4000244140625" text="Title" />
+                        <TableColumn fx:id="createurColumn" prefWidth="220.79998779296875" text="Creator" />
+                        <TableColumn fx:id="dateCreationColumn" prefWidth="236.00006103515625" text="Date of Creation" />
                     </columns>
                 </TableView>
             </children>

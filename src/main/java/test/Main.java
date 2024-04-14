@@ -1,32 +1,6 @@
 package test;
 
 
-import models.User;
-
-import controllers.addThread;
-import controllers.listThreads;
-import models.Thread;
-import models.Post;
-import services.ThreadService;
-import services.PostService;
-
-import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
-import models.Test;
-
-import services.TestService;
-
-import java.sql.SQLException;
-
-
-
 public class Main extends Object {
 
     public static void main(String[] args) {

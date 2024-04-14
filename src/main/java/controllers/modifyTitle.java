@@ -34,7 +34,7 @@ public class modifyTitle {
 
     public void initialize() {
         try {
-            Thread thread = threadService.getById(9); //do it manually until i figure out MessageController
+            Thread thread = threadService.getById(PostController.thrdId); //i did test it manually before ...
             titreMod.setText(thread.getTitleThread());
             descriptionMod.setText(thread.getDescriptionThread());
             color.setValue(Color.web(thread.getColorThread()));
@@ -47,7 +47,10 @@ public class modifyTitle {
     void modifierTitre(ActionEvent event) {
         String titre = titreMod.getText();
         String description = descriptionMod.getText();
-        int id = 9; //MessageController.discuId;
+
+        //int id = 3; //MessageController.discuId;
+        int thrdId = PostController.thrdId;
+
         Color c = color.getValue();
         String colorAsRgb = String.format("#%02X%02X%02X",
                 (int)(c.getRed() * 255),
@@ -92,7 +95,7 @@ public class modifyTitle {
 
         try {
             if (addThread.titreValide(titre) && !addThread.titreExist(titre) && isTitreValid && isDescriptionValid) {
-                Thread thread = new Thread(id, titre, description, colorAsRgb);
+                Thread thread = new Thread(thrdId, titre, description, colorAsRgb);
                 try {
                     threadService.update(thread);
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Thread has been successfully modified !");

@@ -54,6 +54,7 @@ public class listThreads {
         onClick();
     }
 
+    /*
     private void initTableColumns() {
         titreColumn.setCellValueFactory(new PropertyValueFactory<>("titleThread"));
         createurColumn.setCellValueFactory(cellData ->
@@ -65,7 +66,7 @@ public class listThreads {
         ObservableList<Thread> discussions = FXCollections.observableList(threadService.getAll());
         table.setItems(discussions);
     }
-
+*/
     @FXML
     public void onClick() {
         table.setRowFactory(tv -> {
@@ -78,6 +79,7 @@ public class listThreads {
                     // Retrieve the ID of the clicked thread
                     int threadId = clickedRow.getIdThread();
                     PostController.thrdId = threadId;
+
                     changeScene("/Post.fxml");
 
                 }
@@ -93,7 +95,8 @@ public class listThreads {
 
     @FXML
     public void retournerVersAcceuil() {
-        //for future purposes i gotta implement this !
+        //i gotta change thaat to the actual previous page ...
+        changeScene("/addThread.fxml");
     }
 
     @FXML
@@ -102,7 +105,7 @@ public class listThreads {
 
         if (!nomRecherche.isEmpty()) {
             // Créer un prédicat pour filtrer les espaces dont le nom contient la chaîne de recherche
-            Predicate<Thread> nomPredicate = thread -> thread.getCreatorThread().getNom().toLowerCase().contains(nomRecherche);
+            Predicate<Thread> nomPredicate = thread -> thread.getTitleThread().toLowerCase().contains(nomRecherche);
 
             // Créer un FilteredList avec le prédicat
             FilteredList<Thread> filteredList = new FilteredList<>(table.getItems(), nomPredicate);

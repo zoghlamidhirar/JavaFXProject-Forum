@@ -10,10 +10,11 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file for the main scene
-        Parent root = FXMLLoader.load(getClass().getResource("/addThread.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FrontOfficeGUI.fxml"));
 
         // Create the scene
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/styleAddThread.css").toExternalForm());
 
         // Set the scene to the stage
         primaryStage.setScene(scene);

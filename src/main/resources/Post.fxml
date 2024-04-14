@@ -22,7 +22,7 @@
     </ListView>
     <HBox spacing="10">
         <Button fx:id="attachButton" text="📎" />
-        <Button fx:id="emojiButton"  text="😊" />
+        <Button fx:id="emojiButton" text="😊" />
         <TextField fx:id="PostField" styleClass="text-field2" HBox.hgrow="ALWAYS" />
         <Button fx:id="sendButton" text="Send" />
     </HBox>

@@ -43,6 +43,8 @@ public class addThread {
     boolean isTitleValid = true;
     boolean isDescriptionValid = true;
 
+
+
     @FXML
     void addEvent() throws SQLException {
         String title = titre.getText();

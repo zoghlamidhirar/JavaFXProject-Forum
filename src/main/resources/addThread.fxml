@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="750.0" prefWidth="1051.0" styleClass="backg" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.addThread">
+<VBox fx:id="vb" prefHeight="750.0" prefWidth="1051.0" styleClass="backg" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.addThread">
     <children>
         <StackPane prefHeight="327.0" prefWidth="1051.0">
             <children>
