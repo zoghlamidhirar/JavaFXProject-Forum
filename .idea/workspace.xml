@@ -6,21 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ff311902-3ab3-431f-b913-c5ec9af2065a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/addTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/getTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/listThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/listThreads.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/modifyTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/modifyTitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/TestService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Post.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Post.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/addTest.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/addThread.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/addThread.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gettest.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/listThreads.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/listThreads.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styleAddThread.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styleAddThread.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,24 +38,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/zmdel/OneDrive/Desktop/javafx-sdk-21.0.2/lib/javafx.web.jar",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.language"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zmdel/OneDrive/Desktop/javafx-sdk-21.0.2/lib/javafx.web.jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.MainFX">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
@@ -146,6 +135,14 @@
       <workItem from="1712842692640" duration="9006000" />
       <workItem from="1713011301967" duration="3725000" />
       <workItem from="1713094590644" duration="7647000" />
+      <workItem from="1713122220172" duration="89000" />
+      <workItem from="1713171897697" duration="43000" />
+      <workItem from="1713173135821" duration="129000" />
+      <workItem from="1713173586153" duration="178000" />
+      <workItem from="1713210487905" duration="3266000" />
+      <workItem from="1713213882930" duration="69000" />
+      <workItem from="1713214016502" duration="190000" />
+      <workItem from="1713360730341" duration="9109000" />
     </task>
     <servers />
   </component>

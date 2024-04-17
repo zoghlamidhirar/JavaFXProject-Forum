@@ -29,7 +29,7 @@
 }
 
 .button {
-    -fx-background-color: #a9535f; /* Couleur de fond */
+    -fx-background-color: red; /* Couleur de fond */
     -fx-text-fill: white; /* Couleur du texte */
     -fx-font-size: 14px; /* Taille de la police */
     -fx-font-family: "Arial"; /* Police de caractères */
@@ -39,7 +39,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #a9535f; /* Couleur de fond au survol */
+    -fx-background-color: red; /* Couleur de fond au survol */
     -fx-border-color: #a9535f; /* Couleur de bordure au survol */
 }
 

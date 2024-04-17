@@ -1,4 +1,14 @@
 package controllers;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import models.Thread;
 import models.Post;
 import models.User;
@@ -13,21 +23,34 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.apache.pdfbox.io.IOUtils;
 import services.ThreadService;
 import services.PostService;
 import utils.PostCell;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+
+import java.awt.*;
+import java.awt.Font;
+import java.io.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Optional;
+
+import javafx.scene.layout.BorderPane;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 
 public class PostController {
     @FXML
@@ -54,12 +77,17 @@ public class PostController {
     @FXML
     private Button update;
 
+    @FXML
+    private Button pdfButton;
+
     public void setPostField(TextField PostField) {
         this.PostField = PostField;
     }
 
     public static int thrdId  ;
     public static String emojis = "";
+
+    private Post addedPost;
 
 
     User user1 = new User(2,"dhirar");
@@ -90,6 +118,10 @@ public class PostController {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        });
+
+        pdfButton.setOnAction(event -> {
+            genererPDF();
         });
 
         sendButton.setOnAction(e -> {
@@ -227,6 +259,9 @@ public class PostController {
         listView.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.SECONDARY) { // Right-click detected
                 Post selectedItem = listView.getSelectionModel().getSelectedItem();
+                addedPost = selectedItem;
+                System.out.println("Selected Post: " + addedPost);
+
                 if (selectedItem != null) {
                     int PostId = selectedItem.getIdPost();
 
@@ -291,6 +326,73 @@ public class PostController {
 
     }
 
+    @FXML
+    private void genererPDF() {
+        try {
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            PDType0Font font = PDType0Font.load(document, getClass().getResourceAsStream("/fonts/CairoPlay-VariableFont_slnt,wght.ttf"));
+
+            float margin = 0;
+
+            InputStream borderStream = getClass().getResourceAsStream("/image/BORDD.png");
+            if(borderStream == null) {
+                System.out.println("Image file not found!");
+                return;
+            }
+            PDImageXObject borderImage = PDImageXObject.createFromByteArray(document, IOUtils.toByteArray(borderStream), "BORDD.png");
+
+            contentStream.drawImage(borderImage, margin, margin, page.getMediaBox().getWidth() - 2 * margin, page.getMediaBox().getHeight() - 2 * margin);
+
+            PDImageXObject logoImage = PDImageXObject.createFromFile("src/main/resources/image/logo_noir.png", document);
+            float logoWidth = 125;
+            float logoHeight = logoWidth * logoImage.getHeight() / logoImage.getWidth();
+
+            contentStream.drawImage(logoImage, page.getMediaBox().getWidth() - margin - logoWidth - 15, page.getMediaBox().getHeight() - margin - logoHeight - 15, logoWidth, logoHeight);
+
+            // Rest of your code...
+
+            contentStream.close();
+
+            File file = new File("ListOfPosts" + ".pdf");
+            document.save(file);
+            document.close();
+
+            Desktop.getDesktop().open(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void writeText(PDPageContentStream contentStream, String text, float x, float y, PDType0Font font) throws IOException {
+        String[] lines = text.split("\n");
+        float fontSize = 14; // Adjust the font size as needed
+        float leading = 1.5f * fontSize; // Adjust the line spacing as needed
+
+        contentStream.beginText();
+        contentStream.setFont(font, fontSize);
+        contentStream.newLineAtOffset(x, y);
+
+        for (String line : lines) {
+            contentStream.showText(line);
+            contentStream.newLineAtOffset(0, -leading);
+        }
+
+        contentStream.endText();
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 
 }
