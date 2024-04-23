@@ -42,6 +42,7 @@ import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 import javafx.scene.layout.BorderPane;
@@ -340,7 +341,7 @@ public class PostController {
             float margin = 0;
 
             InputStream borderStream = getClass().getResourceAsStream("/image/BORDD.png");
-            if(borderStream == null) {
+            if (borderStream == null) {
                 System.out.println("Image file not found!");
                 return;
             }
@@ -354,7 +355,27 @@ public class PostController {
 
             contentStream.drawImage(logoImage, page.getMediaBox().getWidth() - margin - logoWidth - 15, page.getMediaBox().getHeight() - margin - logoHeight - 15, logoWidth, logoHeight);
 
-            // Rest of your code...
+            // Retrieve list of posts
+            PostService postService = new PostService();
+            List<Post> posts;
+            try {
+                posts = postService.getAll();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            // Start writing posts content
+            float yPosition = page.getMediaBox().getHeight() - 2 * margin - logoHeight - 15 - 100;
+            for (Post post : posts) {
+                contentStream.beginText();
+                contentStream.setFont(font, 12);
+                contentStream.newLineAtOffset(50, yPosition);
+                contentStream.showText("Post content: " + post.getContentPost());
+                contentStream.newLine();
+                contentStream.showText("Timestamp: " + post.getTimeStamp_envoi());
+                contentStream.endText();
+                yPosition -= 50;
+            }
 
             contentStream.close();
 
