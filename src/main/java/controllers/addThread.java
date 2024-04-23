@@ -39,8 +39,8 @@ public class addThread {
     @FXML
     private Label errorMessage2;
 
-    public static final String ACCOUNT_SID = "AC019fafeb9a22358419b04031a8c2009c";
-    public static final String AUTH_TOKEN = "1eda7e7587862accb2f1d00b0f350367";
+    public static final String ACCOUNT_SID = "";
+    public static final String AUTH_TOKEN = "";
     User user1 = new User(2,"dhirar");
 
 
@@ -48,26 +48,7 @@ public class addThread {
     boolean isDescriptionValid = true;
 
 
-    public String formatPhoneNumber(String phoneNumber) {
-        if (!phoneNumber.startsWith("+")) {
-            return "+216" + phoneNumber;
-        }
-        return phoneNumber;
-    }
-    private void sendSms(String phoneNumber, String textMessage) {
-        try {
-            phoneNumber = formatPhoneNumber(phoneNumber);
-            Message sentMessage = Message.creator(
-                            new com.twilio.type.PhoneNumber(phoneNumber),
-                            new com.twilio.type.PhoneNumber("+19284409114"), // This should be your Twilio number
-                            textMessage)
-                    .create();
 
-            System.out.println("Sent message with SID: " + sentMessage.getSid());
-        } catch (com.twilio.exception.ApiException e) {
-            System.out.println("Failed to send SMS: " + e.getMessage());
-        }
-    }
     @FXML
     void addEvent() throws SQLException {
         String title = titre.getText();
@@ -174,6 +155,27 @@ sendSms(phoneNumber,"your thread is successfully added!");
         }
 
         return true;
+    }
+
+    public String formatPhoneNumber(String phoneNumber) {
+        if (!phoneNumber.startsWith("+")) {
+            return "+216" + phoneNumber;
+        }
+        return phoneNumber;
+    }
+    private void sendSms(String phoneNumber, String textMessage) {
+        try {
+            phoneNumber = formatPhoneNumber(phoneNumber);
+            Message sentMessage = Message.creator(
+                            new com.twilio.type.PhoneNumber(phoneNumber),
+                            new com.twilio.type.PhoneNumber("+19284409114"), // This should be your Twilio number
+                            textMessage)
+                    .create();
+
+            System.out.println("Sent message with SID: " + sentMessage.getSid());
+        } catch (com.twilio.exception.ApiException e) {
+            System.out.println("Failed to send SMS: " + e.getMessage());
+        }
     }
 
 
