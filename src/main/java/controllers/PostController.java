@@ -1,11 +1,7 @@
 package controllers;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfPageEventHelper;
-import com.itextpdf.text.pdf.PdfWriter;
-
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -23,29 +19,25 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.apache.pdfbox.io.IOUtils;
+import services.ExcelExporter;
 import services.ThreadService;
 import services.PostService;
 import utils.PostCell;
 
 
 import java.awt.*;
-import java.awt.Font;
 import java.io.*;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-import javafx.scene.layout.BorderPane;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -123,6 +115,8 @@ public class PostController {
 
         pdfButton.setOnAction(event -> {
             genererPDF();
+            ObservableList<Post> posts = PostList.getItems(); // Fetch the posts from the ListView
+            exportToExcel(posts, "posts.xlsx"); // Export to Excel
         });
 
         sendButton.setOnAction(e -> {
@@ -173,6 +167,10 @@ public class PostController {
 
 
     }
+
+
+
+
     public void deleteThread()  {
         try {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -414,6 +412,24 @@ public class PostController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @FXML
+    private void exportToExcel(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialFileName("posts.xlsx");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xlsx");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(((Node) event.getSource()).getScene().getWindow());
+        if (file != null) {
+            String filePath = file.getAbsolutePath();
+            try {
+                ExcelExporter.exportToExcel(PostList.getItems(), filePath); // Pass 'PostList.getItems()' instead of 'posts'
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
 
 }

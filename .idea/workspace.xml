@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ff311902-3ab3-431f-b913-c5ec9af2065a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ListOfPosts.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/ListOfPosts.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/addThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +44,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zmdel/OneDrive/Desktop/javafx-sdk-21.0.2/lib/javafx.web.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zmdel/OneDrive/Desktop/GestionMessagerieAl3eb&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -146,6 +149,10 @@
       <workItem from="1713724793678" duration="2538000" />
       <workItem from="1713864650865" duration="1587000" />
       <workItem from="1713890808232" duration="258000" />
+      <workItem from="1713891553826" duration="36000" />
+      <workItem from="1713895027450" duration="181000" />
+      <workItem from="1713991298523" duration="4208000" />
+      <workItem from="1714030690569" duration="7433000" />
     </task>
     <servers />
   </component>

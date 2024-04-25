@@ -1,5 +1,7 @@
 package controllers;
 
+import com.twilio.exception.ApiException;
+import com.twilio.type.PhoneNumber;
 import models.Thread;
 import models.User;
 import javafx.event.ActionEvent;
@@ -20,9 +22,13 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+
+
 
 public class addThread {
 
@@ -94,11 +100,11 @@ public class addThread {
 
                 ThreadService ts = new ThreadService();
                 ts.add(thread);
+                sendNotificationEmail(thread);  // Send notification email
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setContentText("Thread added successfully!");
-String phoneNumber ="93760262";
-sendSms(phoneNumber,"your thread is successfully added!");
+
                 alert.showAndWait();
                 changeScene();
 
@@ -157,26 +163,51 @@ sendSms(phoneNumber,"your thread is successfully added!");
         return true;
     }
 
-    public String formatPhoneNumber(String phoneNumber) {
-        if (!phoneNumber.startsWith("+")) {
-            return "+216" + phoneNumber;
-        }
-        return phoneNumber;
-    }
-    private void sendSms(String phoneNumber, String textMessage) {
+    private void sendNotificationEmail(Thread thread) {
         try {
-            phoneNumber = formatPhoneNumber(phoneNumber);
-            Message sentMessage = Message.creator(
-                            new com.twilio.type.PhoneNumber(phoneNumber),
-                            new com.twilio.type.PhoneNumber("+19284409114"), // This should be your Twilio number
-                            textMessage)
-                    .create();
+            // SMTP server properties
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
 
-            System.out.println("Sent message with SID: " + sentMessage.getSid());
-        } catch (com.twilio.exception.ApiException e) {
-            System.out.println("Failed to send SMS: " + e.getMessage());
+            // Sender's email credentials
+            String username = "zoghlami.dhirar.10@gmail.com";
+            String password = "badt mwvs cgpd bueg";  // Add your password/ key  here
+
+            javax.mail.Session session = javax.mail.Session.getInstance(props, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+
+            // Receiver's email
+            String receiverEmail = "zoghlami.dhirar.10@gmail.com";
+
+            if (receiverEmail != null) {
+                sendEmail(session, username, receiverEmail, "New thread added: " + thread.getTitleThread());
+                System.out.println("Notification email sent successfully.");
+            } else {
+                System.out.println("Receiver email not found.");
+            }
+
+        } catch (MessagingException ex) {
+            ex.printStackTrace();
         }
     }
+
+    private void sendEmail(javax.mail.Session session, String from, String to, String content) throws MessagingException {
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(from));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+        message.setSubject("New Thread Notification");
+        message.setText(content);
+        Transport.send(message);
+    }
+
+
 
 
 }
