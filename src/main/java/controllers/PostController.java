@@ -115,8 +115,10 @@ public class PostController {
 
         pdfButton.setOnAction(event -> {
             genererPDF();
+            /*
             ObservableList<Post> posts = PostList.getItems(); // Fetch the posts from the ListView
             exportToExcel(posts, "posts.xlsx"); // Export to Excel
+             */
         });
 
         sendButton.setOnAction(e -> {
@@ -413,6 +415,7 @@ public class PostController {
         alert.showAndWait();
     }
 
+    /*
     @FXML
     private void exportToExcel(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -429,7 +432,7 @@ public class PostController {
             }
         }
     }
-
+*/
 
 
 }

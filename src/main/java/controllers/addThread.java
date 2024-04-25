@@ -1,7 +1,6 @@
 package controllers;
 
-import com.twilio.exception.ApiException;
-import com.twilio.type.PhoneNumber;
+
 import models.Thread;
 import models.User;
 import javafx.event.ActionEvent;
@@ -45,8 +44,7 @@ public class addThread {
     @FXML
     private Label errorMessage2;
 
-    public static final String ACCOUNT_SID = "";
-    public static final String AUTH_TOKEN = "";
+
     User user1 = new User(2,"dhirar");
 
 
