@@ -12,6 +12,8 @@ public class Post {
     private User sender ;
     private Thread thread;
     private Image image;
+    private int likesCount;
+    private int dislikesCount;
     public Post(){}
 
     public Post(int idPost, String contentPost, Timestamp TimeStamp_envoi, User sender, Thread thread, Image image) {
@@ -105,6 +107,34 @@ public class Post {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    // Constructor, getters, and setters for new attributes...
+    public Post(int idPost, String contentPost, Timestamp TimeStamp_envoi, User sender, Thread thread, Image image, int likesCount, int dislikesCount) {
+        this.idPost = idPost;
+        this.contentPost = contentPost;
+        this.TimeStamp_envoi = TimeStamp_envoi;
+        this.sender = sender;
+        this.thread = thread;
+        this.image = image;
+        this.likesCount = likesCount;
+        this.dislikesCount = dislikesCount;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public int getDislikesCount() {
+        return dislikesCount;
+    }
+
+    public void setDislikesCount(int dislikesCount) {
+        this.dislikesCount = dislikesCount;
     }
 
     @Override

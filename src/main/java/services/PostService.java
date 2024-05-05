@@ -173,4 +173,20 @@ public class PostService implements IService<Post>{
 
     }
 
+    public void addLike(int postId) throws SQLException {
+        String sql = "UPDATE post SET likesCount = likesCount + 1 WHERE idPost = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, postId);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void addDislike(int postId) throws SQLException {
+        String sql = "UPDATE post SET dislikesCount = dislikesCount + 1 WHERE idPost = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, postId);
+            preparedStatement.executeUpdate();
+        }
+    }
+
 }

@@ -98,7 +98,9 @@ public class addThread {
 
                 ThreadService ts = new ThreadService();
                 ts.add(thread);
+
                 sendNotificationEmail(thread);  // Send notification email
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setContentText("Thread added successfully!");
@@ -185,7 +187,7 @@ public class addThread {
             String receiverEmail = "zoghlami.dhirar.10@gmail.com";
 
             if (receiverEmail != null) {
-                sendEmail(session, username, receiverEmail, "New thread added: " + thread.getTitleThread());
+                sendEmail(session, username, receiverEmail, "New thread added:' " + thread.getTitleThread() + " 'Feel free to interact!" );
                 System.out.println("Notification email sent successfully.");
             } else {
                 System.out.println("Receiver email not found.");

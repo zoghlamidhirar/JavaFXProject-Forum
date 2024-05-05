@@ -100,9 +100,13 @@ public class PostController {
         vb.setStyle("-fx-background-color: " + d1.getColorThread() + ";");
 
         PostList.setItems(Posts);
-        PostList.setCellFactory(param -> new PostCell());
+        PostList.setCellFactory(param -> new PostCell(this));
 
-        System.out.println(Posts);
+
+        //System.out.println(Posts);
+
+        Post selectedPost = PostList.getSelectionModel().getSelectedItem(); // Get the selected post
+        setCurrentPost(selectedPost);
 
         // Add event handler for the emoji button
         emojiButton.setOnAction(e -> {
@@ -368,11 +372,14 @@ public class PostController {
             float yPosition = page.getMediaBox().getHeight() - 2 * margin - logoHeight - 15 - 100;
             for (Post post : posts) {
                 contentStream.beginText();
+
                 contentStream.setFont(font, 12);
                 contentStream.newLineAtOffset(50, yPosition);
                 contentStream.showText("Post content: " + post.getContentPost());
                 contentStream.newLine();
-                contentStream.showText("Timestamp: " + post.getTimeStamp_envoi());
+//                contentStream.newLineAtOffset(150, yPosition);
+//                contentStream.showText("Timestamp: " + post.getTimeStamp_envoi());
+
                 contentStream.endText();
                 yPosition -= 50;
             }
@@ -433,6 +440,69 @@ public class PostController {
         }
     }
 */
+
+    @FXML
+    private Button likeButton;
+
+    @FXML
+    private Button dislikeButton;
+
+    private PostService postService = new PostService();
+
+    // The current post
+    private Post currentPost;
+
+    public void setCurrentPost(Post post) {
+        this.currentPost = post;
+    }
+
+    @FXML
+    public void handleLike(ActionEvent event) {
+        Post selectedPost = PostList.getSelectionModel().getSelectedItem(); // Get the selected post
+        this.setCurrentPost(selectedPost); // Set the current post
+        if (selectedPost != null) {
+            try {
+                postService.addLike(currentPost.getIdPost()); // Add like to the current post
+                updateLikeDislikeCounts(); // Update the UI to reflect the changes
+                changeScene("/Post.fxml");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle SQL exception
+            }
+        }
+    }
+
+    @FXML
+    public void handleDislike(ActionEvent event) {
+        Post selectedPost = PostList.getSelectionModel().getSelectedItem(); // Get the selected post
+        setCurrentPost(selectedPost); // Set the current post
+        if (selectedPost != null) {
+            try {
+                postService.addDislike(currentPost.getIdPost()); // Add dislike to the current post
+                updateLikeDislikeCounts(); // Update the UI to reflect the changes
+                changeScene("/Post.fxml");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle SQL exception
+            }
+        }
+    }
+
+    // Update the like and dislike counts displayed in the UI
+    private void updateLikeDislikeCounts() {
+        if (currentPost != null) {
+            try {
+                // Fetch the updated post from the database
+                currentPost = postService.getById(currentPost.getIdPost());
+                // Update the UI with the new like and dislike counts
+                likeButton.setText("Likes: " + currentPost.getLikesCount());
+                dislikeButton.setText("Dislikes: " + currentPost.getDislikesCount());
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle SQL exception
+            }
+        }
+    }
 
 
 }
